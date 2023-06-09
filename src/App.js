@@ -42,7 +42,26 @@ function App() {
   // console.log(questions)
   return (
     <div className="app">
-      
+      {false ?(
+        <div className="score-section">You scored 1 out of {questions.length}</div>
+      ) : (
+
+      <div className='all'>
+        <div className="question-section">
+          <div className="question-count">
+            <span>Question 1</span> /{questions.length}
+          </div>
+          <div className="question-text">{questions[0].questionText}</div>
+        </div>
+        <div className="answer-section">
+          {questions[0].answerOptions.map((answerOptions) => 
+             <button>{answerOptions.answerText}</button>
+          )}
+          
+        </div>
+
+      </div>
+      )}
     </div>
   );
 }
