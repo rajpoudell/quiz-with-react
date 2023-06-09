@@ -7,3 +7,34 @@
   padding: 0;
   -moz-osx-font-smoothing: grayscale;
 }
+.app{
+  user-select: none;
+  text-align: center;
+background-color: antiquewhite;
+height: 88vh;
+padding-top: 100px;
+
+}
+.question-section ,  .answer-section{
+  font-size: 20px;
+  font-weight: 400;
+}
+.all{
+  margin: 0px auto;
+  border-radius: 12px;
+  width: 50%;
+  background-color: rgb(236, 208, 175);
+
+}
+button:hover{
+  background-color: rgba(127, 255, 212, 0.674);
+}
+button{
+  font-size: 16px;
+  background-color: aquamarine;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  margin: 10px;
+}
