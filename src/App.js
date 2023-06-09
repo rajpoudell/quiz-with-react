@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import './index.css'
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
       ],
     },
     {
-      questionText:'The iphone was created by which company?',
+      questionText:'The Iphone was created by which company?',
       answerOptions:[
         
          { answerText:'Apple',isCorrect:true},
@@ -36,14 +37,29 @@ function App() {
         
       ],
     },
+    {
+      questionText:'THow many Harry Potter Books are there?',
+      answerOptions:[
+        
+         { answerText:'1',isCorrect:false},
+          {answerText:'4',isCorrect:false},
+          {answerText:'6',isCorrect:false},
+          {answerText:'7',isCorrect:true},
+        
+      ],
+    },
   ];
+const [currentQuestion,setCurrentQuestion]=useState(0);
 
+const handleAnswerButtonClick = () =>{
+  const nextQuestion = currentQuestion + 1;
+  setCurrentQuestion(nextQuestion)
+}
 
-  // console.log(questions)
   return (
     <div className="app">
       {false ?(
-        <div className="score-section">You scored 1 out of {questions.length}</div>
+        <div className="score-section">You scored {} out of {questions.length}</div>
       ) : (
 
       <div className='all'>
@@ -51,12 +67,13 @@ function App() {
           <div className="question-count">
             <span>Question 1</span> /{questions.length}
           </div>
-          <div className="question-text">{questions[0].questionText}</div>
+          <div className="question-text">{questions[currentQuestion].questionText}</div>
         </div>
         <div className="answer-section">
-          {questions[0].answerOptions.map((answerOptions) => 
-             <button>{answerOptions.answerText}</button>
+          {questions[currentQuestion].answerOptions.map((answerOptions) => 
+             <button onClick={handleAnswerButtonClick}>{answerOptions.answerText}</button>
           )}
+           
           
         </div>
 
