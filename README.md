@@ -29,42 +29,72 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+.......................................................................................
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Quiz App Documentation
+This is a quiz application built using React. It displays a set of questions and allows the user to select an answer for each question. The score is calculated based on the number of correct answers.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Components
+The application consists of a single component:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. App
+The App component is the main component that renders the quiz. It maintains the state of the current question, score, and whether to show the final score.
 
-## Learn More
+`State
+questions: An array of objects representing the questions and their answer options.
+currentQuestion: Represents the index of the current question.
+showScore: Determines whether to show the final score.
+score: Keeps track of the user's score.
+Event Handlers
+handleAnswerButtonClick: This event handler is called when the user selects an answer for a question. It updates the score if the answer is correct and moves to the next question. If there are no more questions, it shows the final score.
+Rendering
+The render function of the App component conditionally renders different sections based on the value of showScore.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+If showScore is true, it renders the final score section, displaying the user's score out of the total number of questions.
+If showScore is false, it renders the quiz section, which includes the current question, the question count, the question text, and the answer options.`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+JSX Structure
+The JSX structure of the App component is as follows:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Jsx
 
-### Analyzing the Bundle Size
+`<div className="app">
+  {showScore ? (
+    <div className="score-section">You scored {score} out of {questions.length}</div>
+  ) : (
+    <div className='all'>
+      <div className="question-section">
+        <div className="question-count">
+          <span>Question {currentQuestion+1}</span> / {questions.length}
+        </div>
+        <div className="question-text">{questions[currentQuestion].questionText}</div>
+      </div>
+      <div className="answer-section">
+        {questions[currentQuestion].answerOptions.map((answerOptions) => (
+          <button onClick={() => handleAnswerButtonClick(answerOptions.isCorrect)}>
+            {answerOptions.answerText}
+          </button>
+        ))}
+      </div>
+    </div>
+  )}
+</div>`
+Usage
+To use this quiz app, you need to have React installed in your project. You can follow these steps:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Create a new React project or navigate to your existing React project.
+Replace the content of your App.js file with the provided code.
+Create an index.css file in the same directory as App.js and add your own styles.
+Run your React development server (npm start or yarn start).
+Visit the app in your browser to take the quiz.
+That's it! You now have a quiz app where users can answer questions and see their final score.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
