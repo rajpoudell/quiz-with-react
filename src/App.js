@@ -80,7 +80,7 @@ const handleAnswerButtonClick = (isCorrect) =>{
       <div className='all'>
         <div className="question-section">
           <div className="question-count">
-            <span>Question {}</span> /{questions.length}
+            <span>Question {currentQuestion+1}</span> /{questions.length}
           </div>
           <div className="question-text">{questions[currentQuestion].questionText}</div>  {/* currentQuestion as array index   is being used*/}
         </div>
